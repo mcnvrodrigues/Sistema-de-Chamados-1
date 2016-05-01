@@ -6,6 +6,17 @@
 package test;
 
 import Persistencia.ChamadoDAO;
+import entidade.BancoDeDados;
+import entidade.Chamado;
+import entidade.ClienteEmpresa;
+import entidade.Empresa;
+import entidade.Pessoa;
+import entidade.RegistroChamado;
+import entidade.SistemaOperacional;
+import entidade.Status;
+import entidade.Tecnico;
+import entidade.TipoConexao;
+import entidade.TipoProblema;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,7 +30,19 @@ import static org.junit.Assert.*;
  */
 public class SistemaChamadosTest {
     
-    private ChamadoDAO chamado;
+    private ChamadoDAO chamadoDAO;
+    private Chamado chamado;
+    private Tecnico tecnicoA;
+    private ClienteEmpresa clienteEmpresa;
+    private Empresa empresaA;
+    private SistemaOperacional so;
+    private TipoConexao tc;
+    private TipoProblema tp;
+    private Status status;
+    private Pessoa pessoaA;
+    private BancoDeDados bd;
+    private RegistroChamado registroChamado;
+    
     
     public SistemaChamadosTest() {
     }
@@ -27,7 +50,16 @@ public class SistemaChamadosTest {
     @Before
     public void criandoChamado()
     {
-        chamado = new ChamadoDAO();
+        chamadoDAO = new ChamadoDAO();
+        tecnicoA = new Tecnico("Marciano", 42424242);
+        empresaA = new Empresa(1000, "NumPy");
+        
+        
+        clienteEmpresa = new ClienteEmpresa(1, empresaA, 346000000, "NumPy", 45454545);
+        chamado = new Chamado(1, "notebook.py", "Arquivo notebook.py nao encontrado", 1, tecnicoA,  clienteEmpresa, so.LINUX.toString(), "15.04", tc.ADSL.toString(), "152.456.1.1");
+        registroChamado = new RegistroChamado("Notebook.py", chamado, tecnicoA);
+        //chamadoDAO.put(chamado);
+        
     }
     
     @BeforeClass
@@ -55,12 +87,32 @@ public class SistemaChamadosTest {
     @Test
     public void testarGerarCodigo()
     {
-        assertEquals(chamado.gerarCodigo(),1);     
+        assertEquals(chamadoDAO.gerarCodigo(),1);     
     }
     
     @Test
     public void testarGerarCodigoRegistroChamado()
     {
-        assertEquals(chamado.gerarCodigoRegistroChamado(),1);     
+        assertEquals(chamadoDAO.gerarCodigoRegistroChamado(),1);     
     }
+    
+    @Test
+    public void testarGetAssunto()
+    {
+        assertEquals(registroChamado.getAssunto(),"Notebook.py");  
+    }
+    
+    @Test
+    public void testarGetChamado()
+    {
+        assertSame(registroChamado.getChamado(), chamado);
+    }
+    
+    @Test
+    public void testarGetTecnico()
+    {
+        assertEquals(registroChamado.getTecnico().toString(), "Marciano");
+    }
+   
+  
 }
