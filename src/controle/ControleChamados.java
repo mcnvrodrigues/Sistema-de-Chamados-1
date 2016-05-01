@@ -140,7 +140,7 @@ public class ControleChamados {
             			break;
             			
             		case 4 :
-            			prioridade = "Cr�tica";
+            			prioridade = "Critica";
             			break;
             	}
                 relatorio += "\n" + "--------" + "\nData de abertura do chamado: " +
