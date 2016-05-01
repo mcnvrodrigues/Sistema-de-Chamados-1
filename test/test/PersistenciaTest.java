@@ -5,16 +5,16 @@
  */
 package test;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Marciano
  */
-public class PersistenciaTest extends TestCase {
+public class PersistenciaTest {
     
-    public PersistenciaTest(String testName) {
-        super(testName);
+    public PersistenciaTest() {
     }
     
 }
