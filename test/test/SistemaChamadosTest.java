@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Marciano
+ * @author 31181805
  */
 public class SistemaChamadosTest {
     
@@ -44,24 +44,7 @@ public class SistemaChamadosTest {
     private BancoDeDados bd;
     private RegistroChamado registroChamado;
     
-    
     public SistemaChamadosTest() {
-    }
-    
-    @Before
-    public void criandoChamado()
-    {
-        chamadoDAO = new ChamadoDAO();
-        tecnicoA = new Tecnico("Marciano", 42424242);
-        empresaA = new Empresa(1000, "NumPy");
-        
-        
-        
-        clienteEmpresa = new ClienteEmpresa(1, empresaA, 346000000, "NumPy", 45454545);
-        chamado = new Chamado(1, "notebook.py", "Arquivo notebook.py nao encontrado", 1, tecnicoA,  clienteEmpresa, so.LINUX.toString(), "15.04", tc.ADSL.toString(), "152.456.1.1");
-        registroChamado = new RegistroChamado("Notebook.py", chamado, tecnicoA);
-        //chamadoDAO.put(chamado);
-        
     }
     
     @BeforeClass
@@ -79,6 +62,30 @@ public class SistemaChamadosTest {
     @After
     public void tearDown() {
     }
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
+    
+    @Before
+    public void criandoChamado()
+    {
+        chamadoDAO = new ChamadoDAO();
+        tecnicoA = new Tecnico("Marciano", 42424242);
+        empresaA = new Empresa(1000, "NumPy");
+        
+        
+        
+        clienteEmpresa = new ClienteEmpresa(1, empresaA, 346000000, "NumPy", 45454545);
+        chamado = new Chamado(1, "notebook.py", "Arquivo notebook.py nao encontrado", 1, tecnicoA,  clienteEmpresa, so.LINUX.toString(), "15.04", tc.ADSL.toString(), "152.456.1.1");
+        registroChamado = new RegistroChamado("Notebook.py", chamado, tecnicoA);
+        //chamadoDAO.put(chamado);
+        
+    }
+    
+   
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
@@ -115,6 +122,4 @@ public class SistemaChamadosTest {
     {
         assertEquals(registroChamado.getTecnico().toString(), "Marciano");
     }
-   
-  
 }
