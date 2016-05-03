@@ -35,6 +35,7 @@ public class SistemaChamadosTest {
     private Tecnico tecnicoA;
     private ClienteEmpresa clienteEmpresa;
     private Empresa empresaA;
+    private Empresa empresaB;
     private SistemaOperacional so;
     private TipoConexao tc;
     private TipoProblema tp;
@@ -53,6 +54,7 @@ public class SistemaChamadosTest {
         chamadoDAO = new ChamadoDAO();
         tecnicoA = new Tecnico("Marciano", 42424242);
         empresaA = new Empresa(1000, "NumPy");
+        
         
         
         clienteEmpresa = new ClienteEmpresa(1, empresaA, 346000000, "NumPy", 45454545);
